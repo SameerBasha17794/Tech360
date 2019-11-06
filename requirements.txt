@@ -45,7 +45,7 @@ et-xmlfile==1.0.1
 ExifRead==2.1.2
 feedfinder2==0.0.4
 feedparser==5.2.1
-Flask==0.12.1
+Flask==1.0
 Flask-Dance==0.14.0
 Flask-Email==1.4.4
 Flask-Login==0.4.1

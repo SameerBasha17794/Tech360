@@ -1,0 +1,350 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block pagecontent %}
+
+
+<!doctype html>
+<html lang="en">
+	<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0; maximum-scale=1">
+        <meta name="description" content="Tech360hub">
+		<meta name="keywords" content="Tech360hub">
+        <meta name="author" content="">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        
+		<link rel="stylesheet" href="{% static 'css/form-elements.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PZ85QF5');</script>
+<!-- End Google Tag Manager -->
+        
+    <body>
+
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg" style="background-color: #2a8cb3;">
+                <div class="container">
+                	
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong></strong> Login &amp; Register For Blog User</h1>
+                            <div class="description">
+                            	<p>
+	                            	&nbsp;
+                            	</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+					
+					
+					 					      <div class="col-sm-5">
+                        	
+                        	<div class="form-box">
+                        		<div class="form-top">
+	                        		<div class="form-top-left">
+	                        			<h3>Sign up now</h3>
+	                            		<p>Fill in the form below to get instant access:</p>
+	                        		</div>
+	                        		<div class="form-top-right">
+	                        			<i class="fa fa-pencil"></i>
+	                        		</div>
+	                            </div>
+	                            <div class="form-bottom">
+				                    <form role="form" action="" onchange="userchange()" method="post" class="registration-form">
+									<p id="user_success" style="display:none;"></p>
+									
+											<p id="user_exist" style="display:none;"></p>							
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="form-first-name">User name</label>
+				                        	<input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="user_name">
+											<span id="username_err" class="error_text"></span>
+				                        </div>
+										
+										
+				                        
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-email">Email</label>
+				                        	<input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="user_email">
+											<span id="useremail_err" class="error_text"></span>
+				                        </div>
+										
+										
+										 <div class="form-group">
+				                        	<label class="sr-only" for="form-email">Password</label>
+				                        	<input type="password" name="form-email" placeholder="Password" class="form-email form-control" id="user_pass">
+											<span id="userpass_err" class="error_text"></span>
+				                        </div>
+										
+										 <div class="form-group">
+				                        	<label class="sr-only" for="form-email">Confirm Password</label>
+				                        	<input type="password" name="form-email" placeholder="Confirm Password" class="form-email form-control" id="confirm_password">
+											<span id="confirm_err" class="error_text"></span>
+				                        </div>
+										
+										
+										<div class="form-group">
+				                        	<label class="sr-only" for="form-last-name">Phone No</label>
+				                        	<input type="text" name="form-last-name" placeholder="Phone No..." class="form-last-name form-control" id="user_phone">
+											<input type="hidden" name="form-last-name" class="form-last-name form-control" id="modeuser" value="bloguser">
+											<span id="userphone_err" class="error_text"></span>
+				                        </div>
+										
+										
+				                       
+				                        <button type="button" class="btn" onclick="userlogin()">Sign me up!</button>
+				                    </form>
+			                    </div>
+                        	</div>
+                        	
+                        </div>
+						
+						 <div class="col-sm-1 middle-border"></div>
+                        <div class="col-sm-1"></div>
+                        	
+						
+						
+                        <div class="col-sm-5">
+                        	
+                        	<div class="form-box">
+	                        	<div class="form-top">
+	                        		<div class="form-top-left">
+	                        			<h3>Login to your Blog</h3>
+	                            		<p>Enter username and password to log on:</p>
+	                        		</div>
+	                        		<div class="form-top-right">
+	                        			<i class="fa fa-key"></i>
+	                        		</div>
+	                            </div>
+	                            <div class="form-bottom">
+				                    <form role="form" id="bloglogin"   action="userpagefn.php" method="post" class="login-form">
+													                    	<div class="form-group">
+				                    		<label class="sr-only" for="form-username">Username</label>
+				                        	<input type="text" name="username" placeholder="Username..." class="form-username form-control" id="username">
+											<span id="usernameerr" class="error_text"></span>
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-password">Password</label>
+				                        	<input type="password" name="password" placeholder="Password..." class="form-password form-control" id="password">
+											<span id="passworderr" class="error_text"></span>
+				                        </div>
+				                        <button type="button" onclick="userpage()" class="btn">Sign in!</button>
+				                    </form>
+			                    </div>
+		                    </div>
+		                
+		                	
+	                        
+                        </div>
+                        
+                       
+                  
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Footer -->
+        <script>
+function userchange()
+{
+	$("#username_err").html("");
+	$("#useremail_err").html("");
+	$("#userpass_err").html("");
+	$("#userphone_err").html("");
+	$("#confirm_err").html("");
+	$("#user_success").html("");
+	$("#user_exist").html("");
+	
+}
+function userlogin()
+{
+	var name = $("#user_name").val();
+	var email = $("#user_email").val();
+	var e_verify = email_verify(email);
+	var phone = $("#user_phone").val();
+	var mo_verify = mobile_verify(phone);
+	var password = $("#user_pass").val();
+	var confirm = $("#confirm_password").val();
+	var mode = $("#modeuser").val();
+	
+	if(name=='')
+	{
+		$("#username_err").html("Enter Name");
+		return false;
+	}
+	
+	else if(email=='')
+	{
+		$("#useremail_err").html("Enter Email");
+		return false;
+	
+	}
+	
+	else if(email!="" && e_verify=="0"){
+		$('#useremail_err').html("Please enter a valid email address");
+		
+		return false;
+	}
+	
+	
+	
+	
+	else if(password=='')
+	{
+		$("#userpass_err").html("Enter Password");
+		return false;
+	}
+	
+	else if(password!=confirm ){
+		$('#confirm_err').html("Passwords dont match");
+		
+		return false;
+	}
+	else if(phone=='')
+	{
+		$("#userphone_err").html("Enter Phone No");
+		return false;
+	}
+	
+	else if(phone!="" && mo_verify=="0"){
+		$('#userphone_err').html("Please enter the valid 10 digit mobile number");
+		return false;
+	}
+	
+	else
+	{
+		$.ajax({
+			
+			type:"POST",
+			url:"userfn.php",
+			data:
+			{
+				name:name,
+				email:email,
+				phone:phone,
+				password:password,
+				mode:mode,
+			
+			},
+			
+			success:function(msg)
+			{
+				if(msg==1)
+				{
+					$("#user_success").show();
+				$("#user_success").html("<div class='alert alert-success'>Your registration have been submitted successfully.Please check your Email and activate your account.</div>");
+				$("#user_name").val('');
+				$("#user_email").val('');
+				$("#user_phone").val('');
+				$("#user_pass").val('');
+				}
+				else
+				{
+				$("#user_exist").show();
+				$("#user_email").val('');
+				$("#user_email").focus();
+				$("#user_exist").html("<div class='alert alert-danger'>Your Email ID already exists.</div>");
+				}
+				
+				
+			}
+		});
+	}
+}
+function userpagechange()
+{
+$("#usernameerr").html("");
+ $("#passworderr").html("");
+}
+function userpage()
+{
+	var username = $("#username").val();
+	var password = $("#password").val();
+	
+	if(username=='')
+	{
+		$("#usernameerr").html("Enter User Name");
+		return false;
+	}
+	
+	else if(password=='')
+	{
+		$("#passworderr").html("Enter Password");
+		return false;
+	
+	}
+	
+
+	
+	else
+	{
+		
+		$("#bloglogin").submit();	
+				
+				
+	}
+}
+</script>
+        <!-- Javascript -->
+        <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/jquery.backstretch.min.js' %}"></script>
+        <script src="{% static 'js/scripts.js' %}"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
+</html>  <!-- Start Footer -->
+  
+  <script>
+  var date = new Date();
+     date.setDate(date.getDate()-1);
+    $('.datepickstart').datepicker({
+     autoclose: true,
+     todayHighlight: true,
+     format: 'dd/mm/yyyy',
+      startDate: date
+    });
+    $('.datepickstart').datepicker().on('changeDate', function() {
+    	var temp = $(this).datepicker('getDate');
+  		var d = new Date(temp);
+      d.setDate(d.getDate() + 1);
+      $('.datepickend').datepicker({
+     autoclose: true,
+     format: 'dd/mm/yyyy',
+     startDate: d
+    }).on('changeDate', function() {
+    	var temp1 = $(this).datepicker('getDate');
+  		var d1 = new Date(temp1);
+       d1.setDate(d1.getDate() + 1);
+      $('.datepickthird').datepicker({
+     autoclose: true,
+     format: 'dd/mm/yyyy',
+     startDate: d1
+    });
+    });
+    });
+    
+	</script><script type="text/javascript">        $(document).ready(function() {           $(".tab_innerpage_tab").champ();            $(".accordion_innerpage_acc").champ({                plugin_type: "accordion",                side: "left",                active_tab: "1",                controllers: "true"            });                   });</script>
+    </body>
+
+
+</html>
+{% endblock %}

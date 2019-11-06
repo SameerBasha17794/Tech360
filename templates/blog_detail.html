@@ -1,0 +1,382 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block pagecontent %}
+
+		
+		<style>
+		
+		/* To Dropdown navbar dropdown on hover */
+.navbar-nav > li:hover > .dropdown-menu {
+    display: block;
+}
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+.error_text
+{
+	color:red;
+}
+
+.inner-banner
+{
+	display:none;
+}
+</style>
+<script>
+function mobile_verify(txt_phone){
+
+var mob = /^[1-9]{1}[0-9]{9}$/;
+ var valid_mo = mob.test(txt_phone);
+  if (!valid_mo) {
+    return "0";
+  } else
+    return "1";
+}
+function email_verify(emailAddress){
+
+ var emailRegex = new RegExp(/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/i);
+ var valid = emailRegex.test(emailAddress);
+ //alert(emailAddress);
+  if (!valid) {
+    return "0";
+  } else
+    return "1";
+}
+</script><div class="inner-banner blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="content">
+                            <h1>{{ blog.title }}</h1>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="container blog-wrapper padding-lg" style="padding-top:30px;background-color: #FFF!important;margin-top: 30px;">
+            <div class="row"> 
+                <!-- Start Left Column -->
+                <div class="col-sm-8 blog-left">
+                    <ul class="blog-listing detail">
+					<h2 class="blogh2" style="padding-top:0px;">{{ blog.title }}</h2>
+                        <li> <img src="{{ blog.image.url }}" class="img-responsive" alt="">
+                            <br/>
+                            <ul class="post-detail">
+                                <li><span class="icon-calander-icon ico"></span><span class="bold">{{ blog.published_on }}</span> </li>
+                                <li><span class="icon-chat-icon ico"></span><span class="bold">1</span> Comments</li>							   
+							       <li><span class="">Author : {{ blog.author }} </span></li>
+                              
+                            </ul>
+                          <p>{{ blog.description|linebreaks }} </p>
+
+                           
+                        </li>
+                    </ul>
+                    <ul class="follow-us clearfix">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                    </ul>
+                    <div class="comments-wrapper">
+                        <h2>Comments</h2>
+                        <ul class="row comments">
+						
+												
+						
+						
+                            <li class="col-sm-12 clearfix">
+                                
+                                <div class="com-txt">
+                                    <h3>admin</h3>
+                                    <p>Thanks Payal for your valuable feedback. we APPRECIATE your feedback and its all your hard work, dedication  and CONSISTENCY  </p>
+                                     </div>
+						</li>                            
+                        </ul>
+                    </div>
+                    <div class="leave-comment">
+                        <h4>LEAVE COMMENT</h4>
+                        <form action="" method="post" onchange="commentchange()">
+						<p id="comment_msg" style="display:none;"></p>
+                            <div class="row1 clearfix">
+							<p id="commentname_err" class="error_text"></p>
+                                <input name="Full Name"  id="comment_name" placeholder="Full Name" type="text">
+								<p id="commentemail_err" class="error_text"></p>
+                                <input name="Email Address" id="comment_email" placeholder="Email Address" type="text">
+								
+                            </div>
+							<p id="commentmessage_err" class="error_text"></p>
+                            <textarea name="Message" id="comment_message" placeholder="Message"></textarea>
+							
+                            <button class="btn" type="button" onclick="comment(20)">Post Comment <span class="icon-more-icon"></span></button>
+                        </form>
+                    </div>
+                </div>
+                <!-- End Left Column --> 
+
+                <!-- Start Right Column -->
+                <div class="col-sm-4">
+                    <div class="blog-right">
+                       <!-- <div class="search-block clearfix">
+                            <input name="Search" placeholder="Search" type="text">
+                            <button class="search"><span class="icon-search-icon"></span></button>
+                        </div>-->
+                        <div class="category" style="display:none;">
+                            <h3>Courses</h3>
+                            <ul>
+														
+							
+							
+							<li><a href="pages.php?menu_id=43&sub_id=32" target="_blank">Oracle</a></li>							
+							
+							
+							<li><a href="pages.php?menu_id=43&sub_id=33" target="_blank">Java</a></li>							
+							
+							
+							<li><a href="pages.php?menu_id=43&sub_id=35" target="_blank">DevOps</a></li>							
+							
+							
+							<li><a href="pages.php?menu_id=43&sub_id=36" target="_blank">Python</a></li>							
+							
+							
+							<li><a href="pages.php?menu_id=43&sub_id=37" target="_blank">AWS  Sys Ops/Solution Architect</a></li>							
+							
+							
+							<li><a href="pages.php?menu_id=43&sub_id=39" target="_blank">Tableau</a></li>							
+							
+							
+							<li><a href="pages.php?menu_id=43&sub_id=41" target="_blank">Datacom testing</a></li>							
+							
+							
+							<li><a href="pages.php?menu_id=43&sub_id=42" target="_blank">.Net</a></li>							
+							
+							
+							<li><a href="pages.php?menu_id=43&sub_id=43" target="_blank">UI-Design & Development</a></li>							
+							
+							
+							<li><a href="pages.php?menu_id=43&sub_id=44" target="_blank">Data Science</a></li>							
+							
+							
+							<li><a href="pages.php?menu_id=43&sub_id=45" target="_blank">Advanced SalesForce</a></li>                            </ul>
+                        </div>
+                        <div class="recent-post">
+                            <h3>Recent Posts</h3>
+                            <ul>
+							
+														
+							
+							
+							     <li class="clearfix"> <a href="blog_detail.php?id=15">
+                                    <div class="img-block"><img src="images/rp-thumb1.jpg" class="img-responsive" alt=""></div>
+                                    <div class="detail">
+                                        <h4  style="
+    margin-bottom: 10px;
+">Oracle Interview Questions</h4>
+                                        <p><span class="icon-date-icon ico"></span><span>14 Jun</span> </span> 2019</p>
+                                    </div>
+                                    </a> </li>							
+							
+							
+							     <li class="clearfix"> <a href="blog_detail.php?id=16">
+                                    <div class="img-block"><img src="images/rp-thumb1.jpg" class="img-responsive" alt=""></div>
+                                    <div class="detail">
+                                        <h4  style="
+    margin-bottom: 10px;
+">Python program and its solution </h4>
+                                        <p><span class="icon-date-icon ico"></span><span>14 Jun</span> </span> 2019</p>
+                                    </div>
+                                    </a> </li>							
+							
+							
+							     <li class="clearfix"> <a href="blog_detail.php?id=17">
+                                    <div class="img-block"><img src="images/rp-thumb1.jpg" class="img-responsive" alt=""></div>
+                                    <div class="detail">
+                                        <h4  style="
+    margin-bottom: 10px;
+">Java All Program and Solution</h4>
+                                        <p><span class="icon-date-icon ico"></span><span>14 Jun</span> </span> 2019</p>
+                                    </div>
+                                    </a> </li>							
+							
+							
+							     <li class="clearfix"> <a href="blog_detail.php?id=18">
+                                    <div class="img-block"><img src="images/rp-thumb1.jpg" class="img-responsive" alt=""></div>
+                                    <div class="detail">
+                                        <h4  style="
+    margin-bottom: 10px;
+">AWS Interview Questions and Answer Part 1</h4>
+                                        <p><span class="icon-date-icon ico"></span><span>14 Jun</span> </span> 2019</p>
+                                    </div>
+                                    </a> </li>							
+							
+							
+							     <li class="clearfix"> <a href="blog_detail.php?id=19">
+                                    <div class="img-block"><img src="images/rp-thumb1.jpg" class="img-responsive" alt=""></div>
+                                    <div class="detail">
+                                        <h4  style="
+    margin-bottom: 10px;
+">Routing debugging scenarios</h4>
+                                        <p><span class="icon-date-icon ico"></span><span>14 Jun</span> </span> 2019</p>
+                                    </div>
+                                    </a> </li>							
+                                
+                            </ul>
+                        </div>
+                       
+					   
+					   <div class="category">
+                            <h3>Categories</h3>
+                            <ul>
+														
+							
+							
+							<li><a href="blog.php?id=6" target="_blank">News</a></li>							
+							
+							
+							<li><a href="blog.php?id=9" target="_blank">Java</a></li>							
+							
+							
+							<li><a href="blog.php?id=28" target="_blank">startup</a></li>							
+							
+							
+							<li><a href="blog.php?id=30" target="_blank">business</a></li>							
+							
+							
+							<li><a href="blog.php?id=34" target="_blank">Networking</a></li>							
+							
+							
+							<li><a href="blog.php?id=35" target="_blank">Python</a></li>							
+							
+							
+							<li><a href="blog.php?id=36" target="_blank">Oracle</a></li>							
+							
+							
+							<li><a href="blog.php?id=37" target="_blank">AWS</a></li>							
+							
+							
+							<li><a href="blog.php?id=39" target="_blank">Python</a></li>							
+							
+							
+							<li><a href="blog.php?id=40" target="_blank">Tableau</a></li>                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- End Right Column --> 
+
+            </div>
+        </div>
+		
+		<script>
+		function commentchange()
+		{
+			$("#commentname_err").html("");
+			$("#commentemail_err").html("");
+			$("#commentmessage_err").html("");
+		}
+		function comment(val)
+		{
+			var name = $("#comment_name").val();
+			var email = $("#comment_email").val();
+			var message = $("#comment_message").val();
+			
+			if(name =='')
+			{
+				$("#commentname_err").html("Enter Name");
+				return false;
+			}
+			else if(email =='')
+			{
+				$("#commentemail_err").html("Enter Email");
+				return false;
+			}
+			else if(message =='')
+			{
+				$("#commentmessage_err").html("Enter Message");
+				return false;
+			}
+			
+			else
+			{
+				$.ajax({
+					
+					type:"POST",
+					url:'comments.php',
+					data:
+					{
+						name:name,
+						email:email,
+						message:message,
+						value:val,
+					},
+					
+					success:function(msg)
+					{
+						if(msg==1)
+						{
+							$("#comment_msg").show();
+							$("#comment_name").val('');
+							$("#comment_email").val('');
+							$("#comment_message").val('');
+							$("#comment_msg").html("<div class='alert alert-success'>Thank you for your valuable comments</div>");
+						}
+						
+					}
+				})
+			}
+			
+			
+		}
+		
+		</script> 
+    </body>
+
+{% endblock %}
+</html>

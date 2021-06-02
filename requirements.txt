@@ -177,7 +177,7 @@ typing==3.6.4
 UNKNOWN==0.0.0
 update-checker==0.16
 uritemplate==3.0.0
-urllib3==1.23
+urllib3==1.26.5
 URLObject==2.4.3
 virtualenv==15.2.0
 w3lib==1.19.0

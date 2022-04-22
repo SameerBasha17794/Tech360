@@ -132,7 +132,7 @@ pylovepdf==1.3.1
 pymongo==2.7.1
 pyOpenSSL==18.0.0
 pyparsing==2.2.0
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 Pypubsub==4.0.0
 pyquery==1.4.0
 PySocks==1.6.8

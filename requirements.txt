@@ -93,7 +93,7 @@ mistune==0.8.3
 mongoengine==0.15.0
 mongokit==0.9.1.1
 MplayerCtrl==0.3.3
-nbconvert==5.3.1
+nbconvert==6.3.0
 nbformat==4.4.0
 newspaper3k==0.2.8
 nltk==3.4
